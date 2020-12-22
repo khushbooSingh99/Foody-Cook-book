@@ -107,6 +107,14 @@ class DetailDisplay extends StatelessWidget {
                     'id': foodId,
                     'name': foodName,
                   };
+
+                  //Note: Haven't added the condition to check if the data is previously entered or not
+                  //can be checked with valueEventListener in java
+
+
+                  //Query query = _ref.orderByChild("id").equalTo(foodId);
+
+
                   _ref.push().set(idList);
                   Navigator.pop(context, true);
 
