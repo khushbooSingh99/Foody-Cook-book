@@ -3,7 +3,7 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:cook_book/api.dart';
 import 'dart:async';
-import 'package:cook_book/favorite_youTube.dart';
+
 
 
 class DisplayFavorites extends StatefulWidget{
@@ -18,7 +18,7 @@ class DisplayFavorites extends StatefulWidget{
 
 class _DisplayFav extends State<DisplayFavorites> {
 
-  Query _ref;
+  Query _ref; //reference to the database
 
   @override
   void initState() {
@@ -28,9 +28,6 @@ class _DisplayFav extends State<DisplayFavorites> {
 
 
   Widget _buildListItem( {Map food}){
-   // Future<List<FoodDetail>> favList;
-
- //   favList = getFavList(food);
 
     return Center(
       //key: _formKey,
@@ -40,9 +37,8 @@ class _DisplayFav extends State<DisplayFavorites> {
               ListTile(
                 leading: Icon(Icons.fastfood),
                 title: Text('${food['name']}'),
-               // subtitle: Text(getYouTube(food['id'])),
               ),
-              getYouTube(food['id']),
+              getYouTube(food['id']), //lookup using the api call and show corresponding youtube link
               SizedBox(width: 20),
             ]
 
@@ -81,7 +77,7 @@ class _DisplayFav extends State<DisplayFavorites> {
   }
 }
 
-
+//lookup using the api call and show corresponding youtube link of the food with given id number in realtime database
 Widget getYouTube(String idNum){
   Future<FoodDetail> favFood;
   favFood = getFavList(idNum);

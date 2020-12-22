@@ -9,6 +9,7 @@ class ViewFood extends StatefulWidget{
   _ViewItem createState() => _ViewItem();
 }
 
+//creating reference in realtime database to store the id and name of favorite food
 DatabaseReference _ref ;
 
 class _ViewItem extends State<ViewFood>{
@@ -18,7 +19,7 @@ class _ViewItem extends State<ViewFood>{
   @override
   void initState() {
     super.initState();
-    futureFood = fetchRandomFood();
+    futureFood = fetchRandomFood(); //goes to api.dart
     _ref = FirebaseDatabase.instance.reference();
   }
 
@@ -40,16 +41,14 @@ class _ViewItem extends State<ViewFood>{
             builder: (context, snapshot) {
            //   if (snapshot.hasError) print(snapshot.error);
 
-            /*  if(snapshot.hasData){
-                return Text("${snapshot.data.name}");
+              if(snapshot.hasData){
+                return DetailDisplay(myFood: snapshot.data);
               }
               else if (snapshot.hasError) {
                 return Text("${snapshot.error}");
-              } */
-             return snapshot.hasData
-                  ? DetailDisplay(myFood: snapshot.data)
-                  : Center(child: CircularProgressIndicator());
-            //  return CircularProgressIndicator();
+              }
+
+              return CircularProgressIndicator();
             }
 
      )
@@ -98,13 +97,9 @@ class DetailDisplay extends StatelessWidget {
                 ),),
               onPressed: () {/* ... */
 
-
-
                 /*_ref.push().set(idList).then((value) {
                   Navigator.pop(context);
                 }); */
-             //   if (_formKey.currentState.validate()) {
-                  // Process data if valid form.
                   String foodId = myFood.idF;
                   String foodName = myFood.name;
 
@@ -114,7 +109,7 @@ class DetailDisplay extends StatelessWidget {
                   };
                   _ref.push().set(idList);
                   Navigator.pop(context, true);
-               // }
+
 
                 },
             ),

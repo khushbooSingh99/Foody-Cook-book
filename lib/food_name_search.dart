@@ -62,11 +62,12 @@ class _SearchByName extends State<FoodPresence> {
                       //Display();
                        if (_formKey.currentState.validate()) {
                       // Process data if valid form.
+                         //goes to response_food_search.dart for further processing
                          Navigator.push(
                            context,
                            MaterialPageRoute(builder : (context) => ResponseFood(searchThis : _myControlText.text) ),
                          );
-                         // ResponseFood(searchThis : _myControlText.text);
+
                       }
                     },
                     color: Colors.teal[400],

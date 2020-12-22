@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:cook_book/first_letter_search_result.dart';
 
+
+//function for search of food with first letter lookup
 class LetterSearch extends StatefulWidget{
 
 
@@ -50,7 +52,7 @@ class _InitialLetter extends State<LetterSearch> {
                     }
                     return null;
                   },
-                  maxLength: 1,
+                  maxLength: 1, //shows red color if the user enters more than one letter in the text field
                 ),
 
                 Padding(
@@ -61,6 +63,7 @@ class _InitialLetter extends State<LetterSearch> {
                       //Display();
                       if (_formKey.currentState.validate()) {
                         // Process data if valid form.
+                        //goes to first_letter_search_result.dart
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder : (context) => FirstLetterResult(searchThis : _myControlText.text) ),

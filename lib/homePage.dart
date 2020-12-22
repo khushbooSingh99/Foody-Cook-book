@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:cook_book/random_food.dart';
 import 'package:cook_book/search_page.dart';
 import 'package:cook_book/favorites.dart';
+
+//this page contains buttons to navigate through different options
+//1. View Random Food
+//2. View Favorites
+//3. Search food
 class Display extends StatelessWidget{
 
   @override
@@ -27,6 +32,7 @@ class Display extends StatelessWidget{
                 onPressed: () {
                   //go to new page_updation
 
+                  //goes to random_food.dart file
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder : (context) => ViewFood() ),
@@ -46,7 +52,7 @@ class Display extends StatelessWidget{
                 style: ElevatedButton.styleFrom(primary: Colors.cyanAccent[700]),
                 onPressed: () {
                   //go to new page_updation
-
+                  //goes to favorites.dart file
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder : (context) => DisplayFavorites() ),
@@ -66,7 +72,7 @@ class Display extends StatelessWidget{
                 style: ElevatedButton.styleFrom(primary: Colors.purple[600]),
                 onPressed: () {
                   //go to new page_updation
-
+                  //goes to search_page.dart file
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder : (context) => SearchMe() ),

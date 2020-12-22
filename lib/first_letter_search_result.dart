@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:cook_book/api.dart';
 import 'dart:async';
 
+
+//result display for food starting with give letter search
 class FirstLetterResult extends StatefulWidget{
   final String searchThis;
   FirstLetterResult({Key key, this.searchThis}) : super(key:key);
@@ -14,12 +16,13 @@ class FirstLetterResult extends StatefulWidget{
 
 class _GetItems extends State<FirstLetterResult>{
 
+  //storing the list
   Future<List<FoodDetail>> foodResult;
 
   @override
   void initState() {
     super.initState();
-    foodResult = searchAllGivenFoodFirst(widget.searchThis);
+    foodResult = searchAllGivenFoodFirst(widget.searchThis); //goes to api.dart
   }
 
   @override
@@ -38,16 +41,14 @@ class _GetItems extends State<FirstLetterResult>{
               if(snapshot.hasData){
                 return DetailDisplay(myFood: snapshot.data);
               }
-              else if (snapshot.hasError) {
+              else if (snapshot.hasError) { //error handling
                 return Text("Oops!! NA!! Chose some other letter!",
                   style: TextStyle(
                     fontSize: 20.0,
                     color: Colors.black,
                   ),);
               }
-            /*  return snapshot.hasData
-                  ? DetailDisplay(myFood: snapshot.data)
-                  : Center(child: CircularProgressIndicator());*/
+
               return CircularProgressIndicator();
 
             },

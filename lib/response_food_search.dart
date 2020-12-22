@@ -14,12 +14,13 @@ class ResponseFood extends StatefulWidget{
 
 class _GetItem extends State<ResponseFood>{
 
+  //to store the list of food items having the given letters
   Future<List<FoodDetail>> foodResult;
 
   @override
   void initState() {
     super.initState();
-    foodResult = searchGivenFood(widget.searchThis);
+    foodResult = searchGivenFood(widget.searchThis); //goes to api.dart
   }
 
   @override
@@ -43,16 +44,14 @@ class _GetItem extends State<ResponseFood>{
             if(snapshot.hasData){
               return DetailDisplay(myFood: snapshot.data);
             }
-            else if (snapshot.hasError) {
+            else if (snapshot.hasError) { //error handling
               return Text("Oops! Wrong choice of letters ;(",
                 style: TextStyle(
                   fontSize: 20.0,
                   color: Colors.black,
                 ),);
             }
-             // return snapshot.hasData
-               //   ? DetailDisplay(myFood: snapshot.data)
-                 // : Center(child: CircularProgressIndicator());
+
             return CircularProgressIndicator();
 
           },

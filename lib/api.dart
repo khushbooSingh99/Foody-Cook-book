@@ -6,10 +6,10 @@ class URLS {
   static const String BASE_URL = 'https://www.themealdb.com/api/json/v1/1';
 }
 
-
+//for searching random food using api
 Future<FoodDetail> fetchRandomFood() async {
   var response = await http.get('${URLS.BASE_URL}/random.php');
-  List<FoodDetail> list;
+  List<FoodDetail> list; //store the result
   if(response.statusCode == 200){
     var data = json.decode(response.body);
     var rest = data["meals"] as List;
@@ -24,7 +24,7 @@ Future<FoodDetail> fetchRandomFood() async {
 }
 
 
-//search by food name
+//search for food names containg given letters using api
 Future<List<FoodDetail> > searchGivenFood(String myFood) async {
   var response = await http.get('${URLS.BASE_URL}/search.php?s=${myFood}');
   List<FoodDetail> list;
@@ -33,7 +33,6 @@ Future<List<FoodDetail> > searchGivenFood(String myFood) async {
     var rest = data["meals"] as List;
     list = rest.map<FoodDetail>((json) => FoodDetail.fromJson(json)).toList();
     return list;
-    // return FoodDetail.fromJson(json.decode(response.body));
   }
   else{
     throw Exception('Failed to load album');
@@ -41,6 +40,8 @@ Future<List<FoodDetail> > searchGivenFood(String myFood) async {
 
 }
 
+
+//search by food name starting with given letter using api
 Future<List<FoodDetail> > searchAllGivenFoodFirst(String myFood) async {
   var response = await http.get('${URLS.BASE_URL}/search.php?f=${myFood}');
   List<FoodDetail> list;
@@ -49,7 +50,6 @@ Future<List<FoodDetail> > searchAllGivenFoodFirst(String myFood) async {
     var rest = data["meals"] as List;
     list = rest.map<FoodDetail>((json) => FoodDetail.fromJson(json)).toList();
     return list;
-    // return FoodDetail.fromJson(json.decode(response.body));
   }
   else{
     throw Exception('Failed to load album');
@@ -57,6 +57,8 @@ Future<List<FoodDetail> > searchAllGivenFoodFirst(String myFood) async {
 
 }
 
+
+//returns the youtube link given the food id
 Future<FoodDetail> getFavList(String myFood) async {
   var response = await http.get('${URLS.BASE_URL}/lookup.php?i=${myFood}');
   List<FoodDetail> list;
@@ -65,7 +67,6 @@ Future<FoodDetail> getFavList(String myFood) async {
     var rest = data["meals"] as List;
     list = rest.map<FoodDetail>((json) => FoodDetail.fromJson(json)).toList();
     return list[0];
-    // return FoodDetail.fromJson(json.decode(response.body));
   }
   else{
     throw Exception('Failed to load album');
@@ -100,4 +101,5 @@ class FoodDetail {
       idF: json["idMeal"]
     );
   }
+
 }

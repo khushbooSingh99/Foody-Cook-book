@@ -28,7 +28,7 @@ class SearchMe extends StatelessWidget{
                 style: ElevatedButton.styleFrom(primary: Colors.purple[300]),
                 onPressed: () {
                   //go to new page_updation
-
+                  //goes to letter_search.dart
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder : (context) => LetterSearch() ),
@@ -48,7 +48,7 @@ class SearchMe extends StatelessWidget{
                 style: ElevatedButton.styleFrom(primary: Colors.purple[300]),
                 onPressed: () {
                   //go to new page_updation
-
+                  //goes to food_name_search.dart
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder : (context) => FoodPresence() ),
