@@ -1,6 +1,6 @@
 # cook_book
 
-A Flutter application made as an assesment task for ReadingRight internship. 
+A Flutter application communicating with an API.
 
 This app implements basic features of food viewing apps as :
 
